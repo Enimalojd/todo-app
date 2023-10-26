@@ -11,7 +11,14 @@ class TodoController extends Controller
 {
     public function index()
     {
-        return view('todos.index');
+        if (!Auth::check()) {
+            return redirect('/register');
+        } else {
+            $user = Auth::user();
+            $user_id = $user->id;
+            $todos = Todo::where('author_id', $user_id)->get();
+            return view('todos.index', ['todos' => $todos]);
+        }
     }
     public function create()
     {
