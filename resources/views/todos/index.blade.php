@@ -25,7 +25,7 @@
                             <tr>
                                 <th scope="col">Задача</th>
                                 <th scope="col">Описание</th>
-                                <th scope="col">Состояние</th>
+                                <th scope="col">Статус</th>
                                 <th scope="col">Действия</th>
                             </tr>
                         </thead>

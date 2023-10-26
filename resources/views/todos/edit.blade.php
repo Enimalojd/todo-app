@@ -22,6 +22,14 @@
                             <label class="form-label">Ваш текст</label>
                             <textarea name="description" class="form-control" cols="5" rows="5">{{ $todo->description }}</textarea>
                         </div>
+                        <div class="mb-3">
+                            <label for="">Статус</label>
+                            <select name="is_completed" class="form-control">
+                                <option disabled selected>Выбрать статус</option>
+                                <option value="1">Выполнено</option>
+                                <option value="0">В процессе</option>
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary">Обновить</button>
                     </form>
 

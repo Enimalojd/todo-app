@@ -65,6 +65,7 @@ class TodoController extends Controller
         $todo = Todo::find($request->todo_id);
         $todo->title = $request->title;
         $todo->description = $request->description;
+        $todo->is_completed = $request->is_completed;
         $todo->save();
         $request->session()->flash('alert-success', 'Задача успешно обновлена!');
         return redirect()->route('todos.index');
