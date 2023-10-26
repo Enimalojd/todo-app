@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TodoRequest;
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
@@ -21,7 +22,9 @@ class TodoController extends Controller
         Todo::create([
             'title' => $request->title,
             'description' => $request->description,
+            'author_id' => Auth::id(),
             'is_completed' => 0
+
         ]);
 
         $request->session()->flash('alert-success', 'Todo Created Successfully');
