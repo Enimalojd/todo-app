@@ -9,10 +9,21 @@
 
                 <div class="card-body">
 
-                    <form>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
+                    <form method="post" action="{{ route('todos.store') }}">
+                        @csrf
                         <div class="mb-3">
                             <label class="form-label">Заголовок</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="title" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Ваш текст</label>

@@ -5,11 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
+                <div class="card-header">ToDo</div>
                 <div class="card-body">
-
-                    Страница списка задач
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Задача</th>
+                                <th scope="col">Описание</th>
+                                <th scope="col">Состояние</th>
+                                <th scope="col">Действия</th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>
