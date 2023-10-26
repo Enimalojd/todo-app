@@ -34,7 +34,7 @@ class TodoController extends Controller
 
         ]);
 
-        $request->session()->flash('alert-success', 'Todo Created Successfully');
+        $request->session()->flash('alert-success', 'Задача успешно создана!');
 
         return to_route('todos.index');
     }
@@ -42,10 +42,31 @@ class TodoController extends Controller
     {
         $todo = Todo::find($id);
         if (!$todo) {
+            request()->session()->flash('error', 'Такой задачи не существует');
             return to_route('todos.index')->withErrors([
                 'error' => 'Такой задачи не существует'
             ]);
         }
         return view('todos.detail', ['todo' => $todo]);
+    }
+    public function edit($id)
+    {
+        $todo = Todo::find($id);
+        if (!$todo) {
+            request()->session()->flash('error', 'Такой задачи не существует');
+            return to_route('todos.index')->withErrors([
+                'error' => 'Такой задачи не существует'
+            ]);
+        }
+        return view('todos.edit', ['todo' => $todo]);
+    }
+    public function update(Request $request)
+    {
+        $todo = Todo::find($request->todo_id);
+        $todo->title = $request->title;
+        $todo->description = $request->description;
+        $todo->save();
+        $request->session()->flash('alert-success', 'Задача успешно обновлена!');
+        return redirect()->route('todos.index');
     }
 }
