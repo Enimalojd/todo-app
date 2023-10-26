@@ -38,4 +38,14 @@ class TodoController extends Controller
 
         return to_route('todos.index');
     }
+    public function detail($id)
+    {
+        $todo = Todo::find($id);
+        if (!$todo) {
+            return to_route('todos.index')->withErrors([
+                'error' => 'Такой задачи не существует'
+            ]);
+        }
+        return view('todos.detail', ['todo' => $todo]);
+    }
 }

@@ -29,7 +29,7 @@
                             <label class="form-label">Ваш текст</label>
                             <textarea name="description" class="form-control" cols="5" rows="5"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Применить</button>
+                        <button type="submit" class="btn btn-primary">Выполнить</button>
                     </form>
 
                 </div>

@@ -28,8 +28,21 @@
                             <tr>
                                 <td> {{ $todo->title }} </td>
                                 <td> {{ $todo->description }} </td>
-                                <td> {{ $todo->is_complete }} </td>
-                                <td> {{ $todo->action }} </td>
+                                <td>
+                                    @if ($todo->is_completed == 1)
+                                    <a class="btn btn-sm btn-success">Задача выполнена!</a>
+                                    @else
+                                    <a class="btn btn-sm btn-warning">Задача в процессе выполнения</a>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-info">Изменить</a>
+                                    <a class="btn btn-sm btn-info" href="{{ route('todos.detail', $todo->id) }}">Подробнее</a>
+                                    <form action="">
+                                        <input type="hidden" name="todo_id" value=" {{ $todo->id }} ">
+                                        <input type="submit" class="btn btn-sm btn-danger" value="Удалить">
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
