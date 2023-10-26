@@ -7,11 +7,16 @@
             <div class="card">
                 <div class="card-header">ToDo</div>
                 <div class="card-body">
+                    @if (Session::has('alert-success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('alert-success') }}
+                    </div>
+                    @endif
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Задача</th>
-                                <th scope="col">Описание</th>
+                                <th scope="col">Автор</th>
                                 <th scope="col">Состояние</th>
                                 <th scope="col">Действия</th>
                             </tr>
