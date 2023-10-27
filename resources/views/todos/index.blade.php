@@ -33,7 +33,7 @@
                             @foreach ($todos as $todo)
                             <tr>
                                 <td> {{ $todo->title }} </td>
-                                <td> {{ $todo->description }} </td>
+                                <td> {{ substr($todo->description, 0, 38). '...' }} </td>
                                 <td>
                                     @if ($todo->is_completed == 1)
                                     <a class="btn btn-sm btn-success">Задача выполнена!</a>
@@ -58,7 +58,7 @@
                     @else
                     <h4>Нет активных задач</h4>
                     @endif
-
+                    <a class="btn btn-success" href="{{ route('todos.create') }}">Добавить задачу</a>
                 </div>
             </div>
         </div>

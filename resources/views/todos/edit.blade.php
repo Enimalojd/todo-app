@@ -30,7 +30,7 @@
                                 <option value="0">В процессе</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Обновить</button>
+                        <button type="submit" class="btn btn-success">Обновить</button>
                     </form>
 
                 </div>
