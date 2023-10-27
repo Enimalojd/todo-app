@@ -8,6 +8,15 @@
                 <div class="card-header">ToDo</div>
 
                 <div class="card-body">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <h4>Изменить задачу</h4>
 
                     <form method="post" action="{{ route('todos.update') }}">

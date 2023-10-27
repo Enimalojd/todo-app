@@ -62,11 +62,29 @@ class TodoController extends Controller
     }
     public function update(Request $request)
     {
-        $todo_is_completed = Todo::find($request->is_completed);
-        if ($todo_is_completed == null) {
-            request()->session()->flash('error', 'Не был изменён статус');
+        $todo = Todo::find($request->todo_id);
+        if (!$todo) {
+            request()->session()->flash('error', 'Такой задачи не существует');
             return to_route('todos.index')->withErrors([
-                'error' => 'Не был изменён статус'
+                'error' => 'Такой задачи не существует'
+            ]);
+        }
+        if ($request->is_completed == null) {
+            request()->session()->flash('error', 'Не был изменён статус задачи');
+            return redirect()->back()->withErrors([
+                'error' => 'Не был изменён статус задачи'
+            ]);
+        }
+        if ($request->title == null) {
+            request()->session()->flash('error', 'Заголовок не может быть пустым');
+            return redirect()->back()->withErrors([
+                'error' => 'Заголовок не может быть пустым'
+            ]);
+        }
+        if ($request->description == null) {
+            request()->session()->flash('error', 'Описание задачи не может быть пустым');
+            return redirect()->back()->withErrors([
+                'error' => 'Описание задачи не может быть пустым'
             ]);
         }
         $todo->title = $request->title;
