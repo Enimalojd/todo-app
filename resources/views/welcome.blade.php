@@ -8,13 +8,13 @@
                 <div class="card-header">{{ __('ToDo list') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
+                    @if (Auth::check())
+                    <p>Добро пожаловать, {{ Auth::user()->name }}!</p>
+                    <br>
+                    <a class="btn btn-secondary" href=" {{ route('todos.index') }}">К списку задач</a>
+                    @else
+                    <p>Пожалуйста, войдите в свой аккаунт или зарегистрируйтесь</p>
                     @endif
-
-                    Пожалуйста, войдите в свой аккаунт или зарегистрируйтесь
                 </div>
             </div>
         </div>
