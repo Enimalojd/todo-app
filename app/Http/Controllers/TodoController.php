@@ -70,4 +70,17 @@ class TodoController extends Controller
         $request->session()->flash('alert-success', 'Задача успешно обновлена!');
         return redirect()->route('todos.index');
     }
+    public function delete(Request $request)
+    {
+        $todo = Todo::find($request->todo_id);
+        if (!$todo) {
+            request()->session()->flash('error', 'Такой задачи не существует');
+            return to_route('todos.index')->withErrors([
+                'error' => 'Такой задачи не существует'
+            ]);
+        }
+        $todo->delete();
+        $request->session()->flash('alert-success', 'Задача успешно удалена!');
+        return redirect()->route('todos.index');
+    }
 }

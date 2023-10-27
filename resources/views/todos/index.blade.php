@@ -44,7 +44,9 @@
                                 <td>
                                     <a class="btn btn-sm btn-info" href="{{ route('todos.edit', $todo->id) }}">Изменить</a>
                                     <a class="btn btn-sm btn-info" href="{{ route('todos.detail', $todo->id) }}">Подробнее</a>
-                                    <form action="">
+                                    <form method="post" action="{{ route('todos.delete') }}" class="inner">
+                                        @csrf
+                                        @method('DELETE')
                                         <input type="hidden" name="todo_id" value=" {{ $todo->id }} ">
                                         <input type="submit" class="btn btn-sm btn-danger" value="Удалить">
                                     </form>
