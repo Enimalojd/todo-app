@@ -62,7 +62,13 @@ class TodoController extends Controller
     }
     public function update(Request $request)
     {
-        $todo = Todo::find($request->todo_id);
+        $todo_is_completed = Todo::find($request->is_completed);
+        if ($todo_is_completed == null) {
+            request()->session()->flash('error', 'Не был изменён статус');
+            return to_route('todos.index')->withErrors([
+                'error' => 'Не был изменён статус'
+            ]);
+        }
         $todo->title = $request->title;
         $todo->description = $request->description;
         $todo->is_completed = $request->is_completed;

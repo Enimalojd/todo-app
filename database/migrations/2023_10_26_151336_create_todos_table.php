@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('users');
             $table->text('description');
-            $table->tinyInteger('is_completed');
+            $table->tinyInteger('is_completed')->default(false);;
             $table->timestamps();
         });
     }
